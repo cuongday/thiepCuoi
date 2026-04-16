@@ -91,8 +91,10 @@ export default function Maudotrang() {
     full_name: '',
     address: '',
     select_1: '',
-    BanlagicuaDauRe: '',
+    banCoDau: '',
   })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
   // Countdown to 03/05/2026 10:00
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -131,9 +133,33 @@ export default function Maudotrang() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert('Cảm ơn bạn đã xác nhận tham dự!')
+    if (!formData.full_name || !formData.select_1 || !formData.banCoDau) {
+      alert('Vui lòng điền đầy đủ thông tin!')
+      return
+    }
+    setSubmitting(true)
+    setSubmitStatus(null)
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbzg932WoC8T_dZy2oPnIF9SItVLUb5uxU_F9FbDbsnMmSwUPQKK2lUGuXDKZvCXs_ydEg/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          hoTen: formData.full_name,
+          xacNhan: formData.select_1 === 'yes' ? 'Yes' : 'No',
+          loiChuc: formData.address,
+          banCoDau: formData.banCoDau === 'bride',
+        }),
+      })
+      setSubmitStatus('success')
+      setFormData({ full_name: '', address: '', select_1: '', banCoDau: '' })
+    } catch {
+      setSubmitStatus('error')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const openMap = () => {
@@ -1286,14 +1312,16 @@ export default function Maudotrang() {
                     onChange={handleInputChange}
                     style={{
                       width: '100%',
-                      padding: '14px 18px',
+                      padding: '14px 44px 14px 18px',
                       marginBottom: '12px',
                       border: '1px solid #e0d8cc',
                       borderRadius: '25px',
                       fontSize: '13px',
-                      background: '#fff',
+                      background: '#fff url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%23888\' stroke-width=\'1.8\' fill=\'none\' stroke-linecap=\'round\'/%3E%3C/svg%3E") no-repeat right 16px center',
                       outline: 'none',
-                      fontFamily: 'inherit'
+                      fontFamily: 'inherit',
+                      appearance: 'none',
+                      color: formData.select_1 ? '#333' : '#999',
                     }}
                   >
                     <option value="">Bạn có tham dự không?</option>
@@ -1318,41 +1346,59 @@ export default function Maudotrang() {
                       fontFamily: 'inherit'
                     }}
                   />
-                  <input
-                    type="text"
-                    placeholder="Bạn là gì của Dâu Rể?"
-                    name="BanlagicuaDauRe"
-                    value={formData.BanlagicuaDauRe}
+                  <select
+                    name="banCoDau"
+                    value={formData.banCoDau}
                     onChange={handleInputChange}
                     style={{
                       width: '100%',
-                      padding: '14px 18px',
+                      padding: '14px 44px 14px 18px',
                       marginBottom: '12px',
                       border: '1px solid #e0d8cc',
                       borderRadius: '25px',
                       fontSize: '13px',
+                      background: '#fff url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%23888\' stroke-width=\'1.8\' fill=\'none\' stroke-linecap=\'round\'/%3E%3C/svg%3E") no-repeat right 16px center',
                       outline: 'none',
-                      background: '#fff',
-                      fontFamily: 'inherit'
+                      fontFamily: 'inherit',
+                      appearance: 'none',
+                      color: formData.banCoDau ? '#333' : '#999',
                     }}
-                  />
+                  >
+                    <option value="">Bạn là bạn của ai?</option>
+                    <option value="bride">Bạn của cô dâu</option>
+                    <option value="groom">Bạn của chú rể</option>
+                  </select>
+
+                  {submitStatus === 'success' && (
+                    <p style={{ color: '#2e7d32', fontSize: '13px', marginBottom: '10px', fontWeight: '600' }}>
+                      ✅ Cảm ơn bạn đã xác nhận! Chúc mừng tiệc cưới! 🎉
+                    </p>
+                  )}
+                  {submitStatus === 'error' && (
+                    <p style={{ color: '#c41e3a', fontSize: '13px', marginBottom: '10px' }}>
+                      Có lỗi xảy ra, vui lòng thử lại!
+                    </p>
+                  )}
                   <button
                     type="submit"
+                    disabled={submitting}
                     style={{
                       width: '100%',
                       padding: '14px',
-                      background: 'linear-gradient(135deg, #c41e3a 0%, #8b0000 100%)',
+                      background: submitting
+                        ? '#aaa'
+                        : 'linear-gradient(135deg, #c41e3a 0%, #8b0000 100%)',
                       color: '#fff',
                       border: 'none',
                       borderRadius: '25px',
                       fontSize: '14px',
                       fontWeight: '600',
-                      cursor: 'pointer',
+                      cursor: submitting ? 'not-allowed' : 'pointer',
                       marginTop: '5px',
                       letterSpacing: '1px'
                     }}
                   >
-                    GỬI XÁC NHẬN
+                    {submitting ? 'Đang gửi...' : 'GỬI XÁC NHẬN'}
                   </button>
                 </form>
               </FadeIn>
