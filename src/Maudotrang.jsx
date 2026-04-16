@@ -1113,10 +1113,28 @@ export default function Maudotrang() {
                       flexDirection: 'column',
                       alignItems: 'center',
                     }}>
-                      <span style={{ fontSize: '24px', fontWeight: '700', color: '#222', lineHeight: 1.2 }}>
-                        {String(v).padStart(2, '0')}
-                      </span>
-                      <span style={{ fontSize: '11px', color: '#888', marginTop: '4px' }}>{l}</span>
+                      <div style={{ height: '30px', overflow: 'hidden', position: 'relative' }}>
+                        <AnimatePresence mode="popLayout">
+                          <motion.span
+                            key={v}
+                            style={{
+                              display: 'block',
+                              fontSize: '18px',
+                              fontWeight: '300',
+                              color: '#000',
+                              lineHeight: 1.3,
+                              fontFamily: 'inherit',
+                            }}
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -30, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          >
+                            {String(v).padStart(2, '0')}
+                          </motion.span>
+                        </AnimatePresence>
+                      </div>
+                      <span style={{ fontSize: '16px', fontWeight: '300', color: '#000', marginTop: '2px' }}>{l}</span>
                     </div>
                   ))}
                 </div>
@@ -1141,7 +1159,7 @@ export default function Maudotrang() {
                 <div style={{
                   width: '100%',
                   maxWidth: '340px',
-                  background: '#555',
+                  background: '#8B1E2D',
                   borderRadius: '6px 6px 0 0',
                   display: 'grid',
                   gridTemplateColumns: 'repeat(7, 1fr)',
@@ -1155,7 +1173,7 @@ export default function Maudotrang() {
                 {/* Calendar image with heart overlay on day 03 */}
                 <div style={{ width: '100%', maxWidth: '340px', position: 'relative' }}>
                   <img
-                    src="/calender.png"
+                    src="/calender2.png"
                     alt="Lịch tháng 05 2026"
                     style={{ width: '100%', display: 'block' }}
                   />
@@ -1518,7 +1536,10 @@ export default function Maudotrang() {
                   fontSize: '12px',
                   color: '#666',
                   marginBottom: '25px',
-                  maxWidth: '280px'
+                  maxWidth: '280px',
+                  textAlign: 'center',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
                 }}>
                   Thành ý chúc phúc và quà mừng của Quý khách xin được trân trọng ghi nhận
                 </p>
@@ -1538,7 +1559,7 @@ export default function Maudotrang() {
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
                     <img
-                      src={IMAGES.qrCode}
+                      src="/tkChuRe.png"
                       alt="QR"
                       style={{
                         width: '100px',
@@ -1557,9 +1578,9 @@ export default function Maudotrang() {
                       color: '#666',
                       lineHeight: 1.5
                     }}>
-                      CTK: <strong>Nguyễn Bình An</strong><br />
-                      STK: 19036<br />
-                      Vietcombank
+                      CTK: Tăng Văn Long<strong></strong><br />
+                      STK: 0384086722<br />
+                      MB
                     </p>
                   </div>
 
@@ -1571,7 +1592,7 @@ export default function Maudotrang() {
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
                     <img
-                      src={IMAGES.qrCode}
+                      src="/tkCoDau.png"
                       alt="QR"
                       style={{
                         width: '100px',
@@ -1590,9 +1611,9 @@ export default function Maudotrang() {
                       color: '#666',
                       lineHeight: 1.5
                     }}>
-                      CTK: <strong>Nguyễn Phương Nga</strong><br />
-                      STK: 19036<br />
-                      Vietcombank
+                      CTK: <strong>Trần Thị Dinh</strong><br />
+                      STK: 19035967543011<br />
+                      Techcombank
                     </p>
                   </div>
                 </div>
