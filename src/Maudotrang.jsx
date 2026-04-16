@@ -1389,9 +1389,9 @@ export default function Maudotrang() {
                 <div style={{
                   display: 'flex',
                   justifyContent: 'center',
-                  gap: '35px',
+                  gap: '20px',
                   width: '100%',
-                  flexWrap: 'wrap'
+                  flexWrap: 'nowrap'
                 }}>
                   <div style={{
                     textAlign: 'center',
