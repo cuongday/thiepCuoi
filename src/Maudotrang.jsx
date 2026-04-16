@@ -15,6 +15,14 @@ const IMAGES = {
   envelopeOpen: '/thiepmo.png',
   envelopeOpen2: 'https://content.pancake.vn/web-media/52/44/cd/4a/7ede4a56397999b667019a92043a9dcf7165e1b916ff1973db325148-w:750-h:1050-l:15848-t:image/webp.webp',
   image1: 'https://content.pancake.vn/1/s651x869/fwebp80/b8/a9/be/33/645ec95fdf293c645381a4aefd65aada76ac2c12e1a08201bf323dd5-w:1919-h:2560-l:363328-t:image/jpeg.jpg',
+  gallery1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop',
+  gallery2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop',
+  gallery3: 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=600&fit=crop',
+  gallery4: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=600&fit=crop',
+  gallery5: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=800&fit=crop',
+  gallery6: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop',
+  gallery7: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop',
+  gallery8: 'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=600&h=600&fit=crop',
 }
 
 function FadeIn({ children, delay = 0 }) {
@@ -1441,65 +1449,36 @@ export default function Maudotrang() {
                 }}>Album Hình Cưới</h3>
 
                 <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  gap: '8px',
+                  columns: '2',
+                  columnGap: '8px',
                   width: '100%'
                 }}>
-                  <img
-                    src={IMAGES.bride1}
-                    alt=""
-                    style={{
-                      width: '48%',
-                      aspectRatio: '3/4',
-                      objectFit: 'cover',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }}
-                  />
-                  <img
-                    src={IMAGES.bride2}
-                    alt=""
-                    style={{
-                      width: '48%',
-                      aspectRatio: '3/4',
-                      objectFit: 'cover',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }}
-                  />
-                  {/* <img 
-                    src={IMAGES.bride3} 
-                    alt="" 
-                    style={{ 
-                      width: '32%', 
-                      aspectRatio: '1/1',
-                      objectFit: 'cover', 
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
-                  />
-                  <img 
-                    src={IMAGES.heartIcon} 
-                    alt="" 
-                    style={{ 
-                      width: '32%', 
-                      aspectRatio: '1/1',
-                      objectFit: 'contain' 
-                    }} 
-                  />
-                  <img 
-                    src={IMAGES.bride3} 
-                    alt="" 
-                    style={{ 
-                      width: '32%', 
-                      aspectRatio: '1/1',
-                      objectFit: 'cover', 
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                    }} 
-                  /> */}
+                  {[
+                    { src: IMAGES.gallery1, h: 'tall', anim: { initial: { opacity: 0, x: -30 }, animate: { opacity: 1, x: 0 } } },
+                    { src: IMAGES.gallery2, h: 'normal', anim: { initial: { opacity: 0, scale: 0.8 }, animate: { opacity: 1, scale: 1 } } },
+                    { src: IMAGES.gallery3, h: 'normal', anim: { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } } },
+                    { src: IMAGES.gallery4, h: 'normal', anim: { initial: { opacity: 0, x: 30 }, animate: { opacity: 1, x: 0 } } },
+                    { src: IMAGES.gallery5, h: 'wide', anim: { initial: { opacity: 0, y: -30 }, animate: { opacity: 1, y: 0 } } },
+                    { src: IMAGES.gallery6, h: 'normal', anim: { initial: { opacity: 0, rotate: -3 }, animate: { opacity: 1, rotate: 0 } } },
+                    { src: IMAGES.gallery7, h: 'normal', anim: { initial: { opacity: 0, scale: 1.1 }, animate: { opacity: 1, scale: 1 } } },
+                    { src: IMAGES.gallery8, h: 'normal', anim: { initial: { opacity: 0, x: -20, y: 20 }, animate: { opacity: 1, x: 0, y: 0 } } },
+                  ].map((img, i) => (
+                    <motion.div
+                      key={i}
+                      initial={img.anim.initial}
+                      whileInView={img.anim.animate}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
+                      style={{ breakInside: 'avoid', marginBottom: '8px' }}
+                    >
+                      <img src={img.src} alt="" style={{
+                        width: '100%',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                        display: 'block'
+                      }} />
+                    </motion.div>
+                  ))}
                 </div>
               </FadeIn>
             </section>
