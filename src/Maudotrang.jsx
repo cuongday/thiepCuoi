@@ -94,6 +94,26 @@ export default function Maudotrang() {
     BanlagicuaDauRe: '',
   })
 
+  // Countdown to 03/05/2026 10:00
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  useEffect(() => {
+    const target = new Date('2026-05-03T10:00:00')
+    const tick = () => {
+      const now = new Date()
+      const diff = target - now
+      if (diff <= 0) { setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 }); return }
+      setCountdown({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      })
+    }
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+
   const handleOpen = () => setIsOpened(true)
 
   useEffect(() => {
@@ -808,104 +828,111 @@ export default function Maudotrang() {
             </section>
 
 
-            {/* ==================== SECTION 7: EVENT DETAILS - Tiệc 1 ==================== */}
+            {/* ==================== SECTION 7: EVENT DETAILS - Tiệc Nhà Trai ==================== */}
             <section style={{
               width: '100%',
-              background: 'linear-gradient(180deg, #fff 0%, #f9f6f1 100%)',
+              background: '#fff',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              padding: '40px 20px',
+              padding: '40px 20px 36px',
               textAlign: 'center',
-              position: 'relative'
+              position: 'relative',
             }}>
               <CornerDecoration position="topLeft" />
               <CornerDecoration position="topRight" />
 
-              <FadeIn>
-                <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  border: '2px solid #c41e3a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px auto'
-                }}>
-                  <img src={IMAGES.flower} alt="" style={{ width: '25px', opacity: 0.8 }} />
+              {/* TIỆC MỪNG LỄ THÀNH HÔN — bay từ trên xuống */}
+              <motion.h3
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                style={{
+                  fontSize: '14px',
+                  color: '#333',
+                  fontWeight: '700',
+                  letterSpacing: '2.5px',
+                  marginBottom: '8px',
+                }}
+              >TIỆC MỪNG LỄ THÀNH HÔN</motion.h3>
+
+              {/* Vào lúc — bay từ trên xuống */}
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+                style={{ fontSize: '13px', color: '#666', marginBottom: '18px' }}
+              >
+                Vào Lúc <strong style={{ color: '#333' }}>10h00</strong> | <strong style={{ color: '#333' }}>Thứ 7</strong>
+              </motion.p>
+
+              {/* Hàng ngày tháng năm */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0',
+                width: '100%',
+                maxWidth: '320px',
+                marginBottom: '12px',
+              }}>
+                {/* Tháng — từ trái vào */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+                  style={{ flex: 1, textAlign: 'right', paddingRight: '14px' }}
+                >
+                  <div style={{ fontSize: '13px', fontWeight: '600', color: '#444' }}>Tháng 05</div>
+                </motion.div>
+
+                {/* Separator + Ngày to dần */}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ width: '1px', height: '44px', background: '#bbb' }} />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.4 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: 'backOut' }}
+                    style={{ padding: '0 18px', textAlign: 'center' }}
+                  >
+                    <div style={{ fontSize: '62px', fontWeight: '800', color: '#111', lineHeight: 1 }}>03</div>
+                  </motion.div>
+                  <div style={{ width: '1px', height: '44px', background: '#bbb' }} />
                 </div>
 
-                <h3 style={{
-                  fontSize: '18px',
-                  color: '#333',
-                  fontWeight: '600',
-                  marginBottom: '15px',
-                  letterSpacing: '2px'
-                }}>TIỆC MỪNG LỄ THÀNH HÔN</h3>
+                {/* Năm — từ phải vào */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+                  style={{ flex: 1, textAlign: 'left', paddingLeft: '14px' }}
+                >
+                  <div style={{ fontSize: '13px', fontWeight: '600', color: '#444' }}>2026</div>
+                </motion.div>
+              </div>
 
-                <div style={{
-                  width: '40px',
-                  height: '2px',
-                  background: '#c41e3a',
-                  margin: '0 auto 20px'
-                }} />
+              {/* Âm lịch — fade in */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                style={{ fontSize: '12px', color: '#888', marginBottom: '10px' }}
+              >(Tức Ngày 17 Tháng 03 Năm Bính Ngọ)</motion.p>
 
-                <p style={{ fontSize: '13px', color: '#666', marginBottom: '8px' }}>
-                  Vào Lúc <strong style={{ color: '#333' }}>10h00</strong> | <strong style={{ color: '#333' }}>Thứ 6</strong>
-                </p>
-                <p style={{ fontSize: '13px', color: '#666', marginBottom: '15px' }}>Ngày <strong style={{ color: '#c41e3a', fontSize: '20px' }}>03</strong> tháng <strong style={{ color: '#c41e3a', fontSize: '20px' }}>05</strong> năm <strong style={{ color: '#c41e3a', fontSize: '20px' }}>2026</strong></p>
-                <p style={{ fontSize: '11px', color: '#888', marginBottom: '15px' }}>(Tức Ngày 17 Tháng 03 Năm Bính Ngọ)</p>
-
-                <FadeIn>
-                  <p style={{
-                    fontSize: '11px',
-                    color: '#fff',
-                    letterSpacing: '4px',
-                    marginBottom: '15px'
-                  }}>ĐỊA ĐIỂM TỔ CHỨC</p>
-
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3736.5774666666944!2d106.4931335!3d20.5235405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDMxJzI0LjgiTiAxMDbCsDI5JzM1LjMiRQ!5e0!3m2!1svi!2s!4v1776269991480!5m2!1svi!2s"
-                    width="100%"
-                    maxWidth="400"
-                    height="300"
-                    style={{ border: '0', borderRadius: '12px' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-
-                  {/* <h3 style={{ 
-                  fontSize: '20px', 
-                  color: '#fff', 
-                  fontWeight: '600',
-                  marginTop: '20px',
-                  marginBottom: '10px'
-                }}>Trung Tâm Tổ Chức Tiệc Cưới</h3>
-                
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.9)', marginBottom: '20px' }}>
-                  Hồ Tây, Quận Tây Hồ, TP. Hà Nội
-                </p>
-                 */}
-                  <button
-                    onClick={openMap}
-                    style={{
-                      background: '#fff',
-                      color: '#c41e3a',
-                      border: 'none',
-                      padding: '12px 30px',
-                      borderRadius: '25px',
-                      fontSize: '13px',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    XEM CHỈ ĐƯỜNG
-                  </button>
-                </FadeIn>
-              </FadeIn>
+              {/* Địa điểm — bay từ dưới lên */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 1.0, ease: 'easeOut' }}
+                style={{ fontSize: '14px', color: '#555', fontWeight: '600' }}
+              >Tại Tư Gia Nhà Trai</motion.p>
             </section>
 
             {/* ==================== SECTION 8: DIVIDER ==================== */}
@@ -943,107 +970,263 @@ export default function Maudotrang() {
               </FadeIn>
             </section>
 
-            {/* ==================== SECTION 9: EVENT DETAILS - Tiệc 2 ==================== */}
+            {/* ==================== SECTION 9: EVENT DETAILS - Tiệc Nhà Gái ==================== */}
             <section style={{
               width: '100%',
-              background: 'linear-gradient(180deg, #f9f6f1 0%, #fff 100%)',
+              background: '#f9f6f1',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               padding: '40px 20px',
               textAlign: 'center',
-              position: 'relative'
+              position: 'relative',
             }}>
               <CornerDecoration position="bottomLeft" />
               <CornerDecoration position="bottomRight" />
 
-              <FadeIn>
-                <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  border: '2px solid #c41e3a',
+              {/* Box viền */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                style={{
+                  width: '100%',
+                  maxWidth: '320px',
+                  border: '1.5px solid #c9b99a',
+                  borderRadius: '10px',
+                  padding: '28px 20px',
+                  background: '#fdfaf6',
                   display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 20px auto'
+                }}
+              >
+                {/* TIỆC MỪNG LỄ THÀNH HÔN — to dần */}
+                <motion.h3
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.7, delay: 0.1, ease: 'backOut' }}
+                  style={{
+                    fontSize: '14px',
+                    color: '#333',
+                    fontWeight: '800',
+                    letterSpacing: '2px',
+                    marginBottom: '8px',
+                    fontStyle: 'italic',
+                  }}
+                >TIỆC MỪNG LỄ THÀNH HÔN</motion.h3>
+
+                {/* Vào lúc — từ trên xuống */}
+                <motion.p
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
+                  style={{ fontSize: '13px', color: '#666', marginBottom: '18px' }}
+                >
+                  Vào Lúc <strong style={{ color: '#333' }}>10h00</strong> | <strong style={{ color: '#333' }}>Thứ 7</strong>
+                </motion.p>
+
+                {/* Ngày — to dần */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.8, delay: 0.45, ease: 'backOut' }}
+                  style={{
+                    fontSize: '38px',
+                    fontWeight: '800',
+                    color: '#222',
+                    letterSpacing: '2px',
+                    lineHeight: 1.1,
+                    marginBottom: '12px',
+                  }}
+                >03.05.2026</motion.div>
+
+                {/* Âm lịch — bay từ dưới lên */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
+                  style={{ fontSize: '12px', color: '#888', fontStyle: 'italic', marginBottom: '8px' }}
+                >(Tức Ngày 17 Tháng 03 Năm Bính Ngọ)</motion.p>
+
+                {/* Địa điểm — bay từ dưới lên */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
+                  style={{ fontSize: '13px', color: '#555', fontWeight: '600', fontStyle: 'italic' }}
+                >Buổi Tiệc Tổ Chức Tại Tư Gia Nhà Trai</motion.p>
+              </motion.div>
+            </section>
+
+            {/* ==================== SECTION COUNTDOWN ==================== */}
+            <section style={{
+              width: '100%',
+              background: '#fff',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '30px 20px',
+              textAlign: 'center',
+            }}>
+              <FadeIn>
+                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                  {[{ v: countdown.days, l: 'Ngày' }, { v: countdown.hours, l: 'Giờ' }, { v: countdown.minutes, l: 'Phút' }, { v: countdown.seconds, l: 'Giây' }].map(({ v, l }) => (
+                    <div key={l} style={{
+                      width: '70px',
+                      border: '1px solid #ccc',
+                      borderRadius: '8px',
+                      padding: '10px 6px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                      <span style={{ fontSize: '24px', fontWeight: '700', color: '#222', lineHeight: 1.2 }}>
+                        {String(v).padStart(2, '0')}
+                      </span>
+                      <span style={{ fontSize: '11px', color: '#888', marginTop: '4px' }}>{l}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </section>
+
+            {/* ==================== SECTION CALENDAR ==================== */}
+            <section style={{
+              width: '100%',
+              background: '#fefcf8',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '30px 20px 40px',
+              textAlign: 'center',
+            }}>
+              <FadeIn>
+                <p style={{ fontSize: '13px', fontWeight: '800', letterSpacing: '3px', color: '#333', marginBottom: '4px' }}>SAVE THE DATE</p>
+                <p style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '2px', color: '#333', marginBottom: '16px' }}>THÁNG 05 - 2026</p>
+
+                {/* Calendar grid header */}
+                <div style={{
+                  width: '100%',
+                  maxWidth: '340px',
+                  background: '#555',
+                  borderRadius: '6px 6px 0 0',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(7, 1fr)',
+                  padding: '6px 0',
                 }}>
-                  <img src={IMAGES.flower} alt="" style={{ width: '25px', opacity: 0.8 }} />
+                  {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map(d => (
+                    <span key={d} style={{ color: '#fff', fontSize: '11px', fontWeight: '600', textAlign: 'center' }}>{d}</span>
+                  ))}
                 </div>
 
-                <h3 style={{
-                  fontSize: '18px',
-                  color: '#333',
-                  fontWeight: '600',
-                  marginBottom: '15px',
-                  letterSpacing: '2px'
-                }}>BUỔI TIỆC TẠI NHÀ GÁI</h3>
-
-                <div style={{
-                  width: '40px',
-                  height: '2px',
-                  background: '#c41e3a',
-                  margin: '0 auto 20px'
-                }} />
-
-                <p style={{ fontSize: '13px', color: '#666', marginBottom: '8px' }}>
-                  Vào Lúc <strong style={{ color: '#333' }}>13h00</strong> | <strong style={{ color: '#333' }}>Thứ 6</strong>
-                </p>
-                <p style={{ fontSize: '13px', color: '#666', marginBottom: '15px' }}>Ngày <strong style={{ color: '#c41e3a', fontSize: '20px' }}>30</strong> tháng <strong style={{ color: '#c41e3a', fontSize: '20px' }}>12</strong> năm <strong style={{ color: '#c41e3a', fontSize: '20px' }}>2026</strong></p>
-                <p style={{ fontSize: '11px', color: '#888', marginBottom: '15px' }}>(Tức Ngày 10 Tháng 11 Năm Bính Ngọ)</p>
-
-                <FadeIn>
-                  <p style={{
-                    fontSize: '11px',
-                    color: '#fff',
-                    letterSpacing: '4px',
-                    marginBottom: '15px'
-                  }}>ĐỊA ĐIỂM TỔ CHỨC</p>
-
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3736.716303336399!2d106.1721151!3d20.517852899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDMxJzA0LjMiTiAxMDbCsDEwJzE5LjYiRQ!5e0!3m2!1svi!2s!4v1776269470790!5m2!1svi!2s"
-                    width="100%"
-                    maxWidth="400"
-                    height="300"
-                    style={{ border: '0', borderRadius: '12px' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                {/* Calendar image with heart overlay on day 03 */}
+                <div style={{ width: '100%', maxWidth: '340px', position: 'relative' }}>
+                  <img
+                    src="/calender.png"
+                    alt="Lịch tháng 05 2026"
+                    style={{ width: '100%', display: 'block' }}
                   />
-
-                  {/* <h3 style={{ 
-                  fontSize: '20px', 
-                  color: '#fff', 
-                  fontWeight: '600',
-                  marginTop: '20px',
-                  marginBottom: '10px'
-                }}>Trung Tâm Tổ Chức Tiệc Cưới</h3>
-                
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.9)', marginBottom: '20px' }}>
-                  Hồ Tây, Quận Tây Hồ, TP. Hà Nội
-                </p>
-                 */}
-                  <button
-                    onClick={openMap}
-                    style={{
-                      background: '#fff',
-                      color: '#c41e3a',
-                      border: 'none',
-                      padding: '12px 30px',
-                      borderRadius: '25px',
-                      fontSize: '13px',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      letterSpacing: '1px'
-                    }}
-                  >
-                    XEM CHỈ ĐƯỜNG
-                  </button>
-                </FadeIn>
+                  {/* Heart overlay on day 03 — column T7(col index 5), row 1 */}
+                  <div style={{
+                    position: 'absolute',
+                    left: '71%',
+                    top: '28%',
+                    transform: 'translate(-50%, -50%)',
+                    pointerEvents: 'none',
+                  }}>
+                    <motion.svg
+                      width="42" height="38" viewBox="0 0 42 38"
+                      animate={{ scale: [1, 1.2, 0.95, 1.18, 1] }}
+                      transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <path
+                        d="M22 36 C22 36 4 24 4 12 C4 6.5 8.5 2 14 2 C17.5 2 20.5 3.8 22 6.5 C23.5 3.8 26.5 2 30 2 C35.5 2 40 6.5 40 12 C40 24 22 36 22 36Z"
+                        fill="none"
+                        stroke="#c41e3a"
+                        strokeWidth="2.2"
+                      />
+                    </motion.svg>
+                  </div>
+                </div>
               </FadeIn>
             </section>
 
             {/* ==================== SECTION 10: LOCATION ==================== */}
+            <section style={{
+              width: '100%',
+              background: '#fff',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '36px 20px',
+              textAlign: 'center',
+              gap: '24px',
+            }}>
+              {/* Nhà Trai Map */}
+              <FadeIn>
+                <p style={{ fontSize: '12px', fontWeight: '700', color: '#c41e3a', letterSpacing: '2px', marginBottom: '10px' }}>ĐỊA ĐIỂM — NHÀ TRAI</p>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3736.5774666666944!2d106.4931335!3d20.5235405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDMxJzI0LjgiTiAxMDbCsDI5JzM1LjMiRQ!5e0!3m2!1svi!2s!4v1776269991480!5m2!1svi!2s"
+                  width="100%"
+                  height="220"
+                  style={{ border: '0', borderRadius: '12px', display: 'block' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <button
+                  onClick={openMap}
+                  style={{
+                    marginTop: '12px',
+                    background: '#c41e3a',
+                    color: '#fff',
+                    border: 'none',
+                    padding: '10px 28px',
+                    borderRadius: '25px',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    letterSpacing: '1px'
+                  }}
+                >XEM CHỈ ĐƯỜNG</button>
+              </FadeIn>
+
+              {/* Nhà Gái Map */}
+              <FadeIn delay={0.1}>
+                <p style={{ fontSize: '12px', fontWeight: '700', color: '#c41e3a', letterSpacing: '2px', marginBottom: '10px' }}>ĐỊA ĐIỂM — NHÀ GÁI</p>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3736.716303336399!2d106.1721151!3d20.517852899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDMxJzA0LjMiTiAxMDbCsDEwJzE5LjYiRQ!5e0!3m2!1svi!2s!4v1776269470790!5m2!1svi!2s"
+                  width="100%"
+                  height="220"
+                  style={{ border: '0', borderRadius: '12px', display: 'block' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <button
+                  onClick={() => window.open('https://maps.google.com/?q=20.5178529,106.1721151', '_blank')}
+                  style={{
+                    marginTop: '12px',
+                    background: '#c41e3a',
+                    color: '#fff',
+                    border: 'none',
+                    padding: '10px 28px',
+                    borderRadius: '25px',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    letterSpacing: '1px'
+                  }}
+                >XEM CHỈ ĐƯỜNG</button>
+              </FadeIn>
+            </section>
 
             {/* ==================== SECTION 11: RSVP ==================== */}
             <section style={{
