@@ -15,6 +15,7 @@ const IMAGES = {
   envelopeOpen: '/thiepmo.png',
   envelopeOpen2: 'https://content.pancake.vn/web-media/52/44/cd/4a/7ede4a56397999b667019a92043a9dcf7165e1b916ff1973db325148-w:750-h:1050-l:15848-t:image/webp.webp',
   image1: '/DSC00007.JPG',
+  bgr: '/bgr.png',
   image2: '/DSC09311.JPG',
   image3: '/DSC09654.JPG',
   image4: '/DSC09273.JPG',
@@ -187,10 +188,12 @@ export default function Maudotrang() {
       maxWidth: '420px',
       margin: '0 auto',
       minHeight: '100vh',
-      background: '#fefcf8',
+      backgroundImage: `url(${IMAGES.bgr})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center top',
+      backgroundRepeat: 'no-repeat',
       position: 'relative',
       overflowX: 'hidden',
-      // fontFamily: '"Playfair Display", "Times New Roman", serif'
     }}>
 
       {/* ==================== SECTION 1: ENVELOPE COVER ==================== */}
@@ -198,7 +201,10 @@ export default function Maudotrang() {
         position: 'relative',
         width: '100%',
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #fefcf8 0%, #f5efe6 100%)',
+        backgroundImage: `url(${IMAGES.bgr})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundRepeat: 'no-repeat',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -294,7 +300,10 @@ export default function Maudotrang() {
                 left: '20px',
                 right: '20px',
                 bottom: '20px',
-                background: 'linear-gradient(135deg, #fefcf8 0%, #f5efe6 100%)',
+                backgroundImage: `url(${IMAGES.bgr})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center top',
+                backgroundRepeat: 'no-repeat',
                 borderRadius: '10px',
                 padding: '20px',
                 textAlign: 'center',
@@ -340,22 +349,67 @@ export default function Maudotrang() {
         <CornerDecoration position="topRight" />
         <CornerDecoration position="bottomLeft" />
         <CornerDecoration position="bottomRight" />
+        <img
+            src="/hoa2.png"
+            alt="Decoration"
+            style={{
+              position: 'absolute',
+              bottom: '-62px',
+              left: '305px',
+              width: '120px',
+              height: 'auto',
+              pointerEvents: 'none',
+              zIndex: 10,
+            }}
+          />
+        <img
+            src="/hoa2.png"
+            alt="Decoration"
+            style={{
+              position: 'absolute',
+              top: '-20px',
+              left: '-20px',
+              width: '120px',
+              height: 'auto',
+              pointerEvents: 'none',
+              zIndex: 10,
+              transform: 'rotate(180deg)',
+            }}
+          />
 
-
+<img
+            src="/hoa2.png"
+            alt="Decoration"
+            style={{
+              position: 'absolute',
+              top: '-50px',
+              left: '50px',
+              width: '120px',
+              height: 'auto',
+              pointerEvents: 'none',
+              zIndex: 9,
+              transform: 'rotate(-90deg)',
+            }}
+          />
         <motion.div
           key="envelope"
           onClick={handleOpen}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{
+          animate={!isOpened ? {
             opacity: 1,
             scale: [1, 1.07, 1],
+          } : {
+            opacity: 1,
+            scale: 1,
           }}
           exit={{ opacity: 0, scale: 0.8 }}
-          transition={{
+          transition={!isOpened ? {
             opacity: { duration: 0.4, delay: 0.4, ease: 'easeOut' },
             scale: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+          } : {
+            opacity: { duration: 0.4, delay: 0.4, ease: 'easeOut' },
           }}
-          whileHover={{ scale: 1.08 }}
+          whileHover={!isOpened ? { scale: 1.08 } : {}}
           style={{
             position: 'relative',
             maxWidth: '260px',
@@ -381,6 +435,9 @@ export default function Maudotrang() {
               transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
             />
           )}
+
+          {/* Hoa decoration - góc trái bên dưới */}
+          
 
           {isOpened && (
             <>
