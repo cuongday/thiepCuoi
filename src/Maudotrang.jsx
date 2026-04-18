@@ -8,21 +8,26 @@ const IMAGES = {
   mapMarker: 'https://statics.pancake.vn/web-media/c9/7a/8a/e3/fb960ea4f4e39ac38adbbf4a43056dbd6a0aaf1e6cff9583e78c6d17-w:313-h:313-l:5539-t:image/webp.webp',
   qrCode: 'https://statics.pancake.vn/web-media/ef/a4/38/5e/15e40be995e3b9e588ae0a0ca1d7c3ff0465711cc07308837af54430-w:586-h:652-l:51250-t:image/jpeg.jpg',
   heartIcon: 'https://statics.pancake.vn/web-media/e1/9d/4c/50/671e154c9e28f0220e7fe187becbba9dcd39696ffc258b71f57b9dbe-w:100-h:100-l:3087-t:image/webp.webp',
-  bride1: 'https://statics.pancake.vn/web-media/10/8a/c7/a3/4469b23a30640d824081431e33cfd219c78e0717425798aed85f1535-w:1080-h:1440-l:167241-t:image/jpeg.jpg',
-  bride2: 'https://statics.pancake.vn/web-media/ba/87/8e/98/5b47f056d251a6b8bb4861fe26e96bff44e06e4543af717b5d2d8b23-w:1080-h:1440-l:133805-t:image/jpeg.jpg',
-  bride3: 'https://content.pancake.vn/1/8b/6f/dd/fb/cf5ecf59198594e070980d032f42a099ebb38e3442cb170ccde55c52-w:200-h:200-l:190831-t:image/webp-ANIM.gif',
+  bride1: '/DSC00013.JPG',
+  bride2: '/DSC00096.JPG',
+  bride3: '/DSC09311.JPG',
   envelopeClosed: 'https://statics.pancake.vn/web-media/ce/0a/61/8b/bb03b54cdc80770d87986c12ef4d3aea6b8fb377ea55a84f33dec762-w:750-h:1050-l:9424-t:image/webp.webp',
   envelopeOpen: '/thiepmo.png',
   envelopeOpen2: 'https://content.pancake.vn/web-media/52/44/cd/4a/7ede4a56397999b667019a92043a9dcf7165e1b916ff1973db325148-w:750-h:1050-l:15848-t:image/webp.webp',
-  image1: 'https://content.pancake.vn/1/s651x869/fwebp80/b8/a9/be/33/645ec95fdf293c645381a4aefd65aada76ac2c12e1a08201bf323dd5-w:1919-h:2560-l:363328-t:image/jpeg.jpg',
-  gallery1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop',
-  gallery2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop',
-  gallery3: 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=600&fit=crop',
-  gallery4: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=600&fit=crop',
-  gallery5: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=800&fit=crop',
-  gallery6: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop',
-  gallery7: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop',
-  gallery8: 'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=600&h=600&fit=crop',
+  image1: '/DSC00007.JPG',
+  image2: '/DSC09311.JPG',
+  image3: '/DSC09654.JPG',
+  image4: '/DSC09273.JPG',
+  image5: '/DSC00048.JPG',
+  gallery1: '/DSC09612.JPG',
+  gallery2: '/DSC09789.JPG',
+  gallery3: '/DSC09997.JPG',
+  gallery4: '/DSC09979.JPG',
+  gallery5: '/DSC09864.JPG',
+  gallery6: '/DSC09438.JPG',
+  gallery7: '/DSC00055.JPG',
+  gallery8: '/DSC00119.JPG',
+  thankyou: '/DSC09541.JPG',
 }
 
 function FadeIn({ children, delay = 0 }) {
@@ -192,7 +197,7 @@ export default function Maudotrang() {
       <section style={{
         position: 'relative',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '100vh',
         background: 'linear-gradient(135deg, #fefcf8 0%, #f5efe6 100%)',
         display: 'flex',
         flexDirection: 'column',
@@ -200,6 +205,83 @@ export default function Maudotrang() {
         justifyContent: 'center',
         padding: '20px'
       }}>
+        {/* Name Banner - chỉ hiện khi mở thiệp */}
+        {isOpened && (
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
+          style={{
+          position: 'absolute',
+          bottom: '14%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '14px',
+          width: '100%',
+          marginBottom: '20px',
+          flexShrink: 0,
+          zIndex: 1000,
+        }}>
+          <motion.div style={{
+            flex: 1,
+            maxWidth: '60px',
+            height: '1.5px',
+            background: 'linear-gradient(90deg, transparent, #8B1E2D)',
+          }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: 'easeOut' }}
+          />
+
+          <motion.span style={{
+            fontFamily: "'UTM-Sloop', sans-serif",
+            fontSize: '34px',
+            color: '#8B1E2D',
+            fontWeight: '400',
+            whiteSpace: 'nowrap',
+          }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
+          >Tăng Long</motion.span>
+
+          <motion.svg width="30" height="30" viewBox="0 0 24 24" style={{ flexShrink: 0 }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.1, ease: 'backOut' }}
+          >
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              fill="#8B1E2D"
+            />
+          </motion.svg>
+
+          <motion.span style={{
+            fontFamily: "'UTM-Sloop', sans-serif",
+            fontSize: '34px',
+            color: '#8B1E2D',
+            fontWeight: '400',
+            whiteSpace: 'nowrap',
+          }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
+          >Trần Dinh</motion.span>
+
+          <motion.div style={{
+            flex: 1,
+            maxWidth: '60px',
+            height: '1.5px',
+            background: 'linear-gradient(90deg, #8B1E2D, transparent)',
+          }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: 'easeOut' }}
+          />
+        </motion.div>
+        )}
+
         {isOpened && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -248,6 +330,11 @@ export default function Maudotrang() {
               }} className="">Quý Khách</motion.h4>
           </motion.div>
         )}
+        
+        
+
+       
+
         {/* Corner decorations */}
         <CornerDecoration position="topLeft" />
         <CornerDecoration position="topRight" />
@@ -261,7 +348,7 @@ export default function Maudotrang() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
+          transition={{ duration: 0.4, delay: 0.4, ease: 'easeOut' }}
           style={{
             position: 'relative',
             maxWidth: '260px',
@@ -270,16 +357,20 @@ export default function Maudotrang() {
           }}
         >
           {!isOpened && (
-            <img
+            <motion.img
               src={IMAGES.envelopeClosed}
               alt="Envelope"
               style={{
                 width: '100%',
                 borderRadius: '8px',
                 position: 'absolute',
-                top: '80px',
+                top: '0',
                 left: 0,
               }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
             />
           )}
 
@@ -287,7 +378,7 @@ export default function Maudotrang() {
             <>
               <div style={{
                 position: 'absolute',
-                top: '160px',
+                top: '0px',
                 left: 0,
                 width: '100%',
                 height: '100%',
@@ -299,18 +390,18 @@ export default function Maudotrang() {
               }} />
 
               <motion.div
-                initial={{ opacity: 0, y: 100 }}
+                initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+                transition={{ duration: 0.8, delay: 0.4, ease: 'backOut' }}
                 style={{
                   position: 'absolute',
-                  top: '35%',
-                  left: '10%',
-                  width: '80%',
+                  top: '-10%',
+                  left: '8%',
+                  width: '84%',
                   height: '60%',
                   backgroundImage: `url(${IMAGES.image1})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center center',
+                 
                   backgroundRepeat: 'no-repeat',
                   borderRadius: '6px',
                   border: '1px solid #c41e3a',
@@ -320,7 +411,7 @@ export default function Maudotrang() {
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '-50%',
+                  bottom: '-4%',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '100%',
@@ -364,191 +455,10 @@ export default function Maudotrang() {
             transition={{ duration: 0.5 }}
           >
 
-            {/* ==================== SECTION 2: SAVE THE DATE HERO ==================== */}
-            {/* <section style={{ 
-              width: '100%', 
-              background: 'linear-gradient(135deg, #c41e3a 0%, #8b0000 100%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '50px 20px',
-              textAlign: 'center',
-              position: 'relative'
-            }}>
-              <CornerDecoration position="topLeft" />
-              <CornerDecoration position="topRight" />
-              <CornerDecoration position="bottomLeft" />
-              <CornerDecoration position="bottomRight" />
-              
-              <FadeIn>
-                <p style={{ 
-                  fontSize: '11px', 
-                  color: '#fff', 
-                  letterSpacing: '4px',
-                  fontWeight: '400',
-                  marginBottom: '15px'
-                }}>SAVE THE DATE</p>
-                
-                <h1 style={{ 
-                  fontSize: '42px', 
-                  color: '#fff', 
-                  fontWeight: '700',
-                  lineHeight: 1.1,
-                  textShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                }}>30.11.2026</h1>
-                
-                <motion.img 
-                  src={IMAGES.heart} 
-                  alt="" 
-                  style={{ width: '30px', marginTop: '20px', opacity: 0.9 }}
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </FadeIn>
-            </section> */}
-
-            {/* ==================== SECTION 3: WE ARE GETTING MARRIED ==================== */}
-            {/* <section style={{ 
-              width: '100%', 
-              background: '#fefcf8',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '50px 20px',
-              textAlign: 'center',
-              position: 'relative'
-            }}>
-              <BorderDecoration />
-              
-              <FadeIn>
-                <p style={{ 
-                  fontSize: '12px', 
-                  color: '#c41e3a', 
-                  letterSpacing: '3px',
-                  marginBottom: '10px'
-                }}>✦ ✦ ✦</p>
-                
-                <h2 style={{ 
-                  fontSize: '32px', 
-                  color: '#333', 
-                  fontWeight: '600',
-                  fontStyle: 'italic',
-                  marginBottom: '10px'
-                }}>We Are Getting Married</h2>
-                
-                <p style={{ 
-                  fontSize: '13px', 
-                  color: '#666',
-                  marginBottom: '25px'
-                }}>Trân Trọng Kính Mời</p>
-                
-                <div style={{
-                  width: '60px',
-                  height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #c41e3a, transparent)',
-                  margin: '0 auto'
-                }} />
-              </FadeIn>
-            </section> */}
+            
 
             {/* ==================== SECTION 4B: NAME BANNER ==================== */}
-            <section style={{
-              width: '100%',
-              background: '#fefcf8',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '20px 20px 30px',
-              overflow: 'hidden',
-            }}>
-              <>
-                {/* Top horizontal line */}
-                <div style={{
-                  width: '100%',
-                  height: '1.5px',
-                  background: 'linear-gradient(90deg, transparent, #8B1E2D, transparent)',
-                  marginBottom: '16px',
-                }} />
-
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '14px',
-                  width: '100%',
-                }}>
-                  {/* Left decorative line */}
-                  <div style={{
-                    flex: 1,
-                    maxWidth: '60px',
-                    height: '1.5px',
-                    background: 'linear-gradient(90deg, transparent, #8B1E2D)',
-                  }} />
-
-                  {/* Name 1 — slides from left */}
-                  <motion.span
-                    initial={{ opacity: 0, x: -80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                    style={{
-                      fontFamily: "'UTM-Sloop', sans-serif",
-                      fontSize: '34px',
-                      color: '#8B1E2D',
-                      fontWeight: '400',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >Tăng Long</motion.span>
-
-                  {/* Heart — pops in after names arrive */}
-                  <motion.svg
-                    width="30" height="30" viewBox="0 0 24 24"
-                    style={{ flexShrink: 0 }}
-                    initial={{ opacity: 0, scale: 0.3 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 1.1, ease: 'backOut' }}
-                  >
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                      fill="#8B1E2D"
-                    />
-                  </motion.svg>
-
-                  {/* Name 2 — slides from right */}
-                  <motion.span
-                    initial={{ opacity: 0, x: 80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                    style={{
-                      fontFamily: "'UTM-Sloop', sans-serif",
-                      fontSize: '34px',
-                      color: '#8B1E2D',
-                      fontWeight: '400',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >Trần Dinh</motion.span>
-
-                  {/* Right decorative line */}
-                  <div style={{
-                    flex: 1,
-                    maxWidth: '60px',
-                    height: '1.5px',
-                    background: 'linear-gradient(90deg, #8B1E2D, transparent)',
-                  }} />
-                </div>
-
-                {/* Bottom horizontal line */}
-                <div style={{
-                  width: '100%',
-                  height: '1.5px',
-                  background: 'linear-gradient(90deg, transparent, #8B1E2D, transparent)',
-                  marginTop: '16px',
-                }} />
-              </>
-            </section>
-
+            
             {/* ==================== SECTION 6: PARENTS ==================== */}
             <section style={{
               width: '100%',
@@ -758,18 +668,11 @@ export default function Maudotrang() {
                 }}
               >
                 <img
-                  src={IMAGES.image1}
+                  src={IMAGES.image2}
                   alt="Wedding"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 {/* Golden frame overlay */}
-                <div style={{
-                  position: 'absolute',
-                  top: '10px', left: '10px', right: '10px', bottom: '10px',
-                  border: '1.5px solid rgba(201, 168, 76, 0.5)',
-                  borderRadius: '4px',
-                  pointerEvents: 'none'
-                }} />
               </motion.div>
 
               {/* Chữ "Trân Trọng Kính Mời" — trượt từ trái sang */}
@@ -817,7 +720,7 @@ export default function Maudotrang() {
                   flexShrink: 0,
                 }}
               >
-                <img src={IMAGES.bride1} alt="Wedding 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={IMAGES.image3} alt="Wedding 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
 
               {/* Ảnh giữa — cao hơn, bay từ dưới lên */}
@@ -837,7 +740,7 @@ export default function Maudotrang() {
                   marginBottom: '40px',
                 }}
               >
-                <img src={IMAGES.bride2} alt="Wedding 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={IMAGES.image4} alt="Wedding 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
 
               {/* Ảnh phải — bay từ dưới lên */}
@@ -855,7 +758,7 @@ export default function Maudotrang() {
                   flexShrink: 0,
                 }}
               >
-                <img src={IMAGES.bride1} alt="Wedding 3" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={IMAGES.image5} alt="Wedding 3" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
             </section>
 
@@ -955,10 +858,10 @@ export default function Maudotrang() {
                     alt="Lịch tháng 05 2026"
                     style={{ width: '100%', display: 'block' }}
                   />
-                  {/* Heart overlay on day 03 — column T7(col index 5), row 1 */}
+                  {/* Heart overlay on day 04 — column CN(col index 6), row 1 */}
                   <div style={{
                     position: 'absolute',
-                    left: '71%',
+                    left: '82%',
                     top: '28%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',
@@ -1280,7 +1183,7 @@ export default function Maudotrang() {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundImage: `url(${IMAGES.bride1})`,
+                backgroundImage: `url(${IMAGES.thankyou})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.5,
