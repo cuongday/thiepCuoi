@@ -346,14 +346,22 @@ export default function Maudotrang() {
           key="envelope"
           onClick={handleOpen}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{
+            opacity: 1,
+            scale: [1, 1.07, 1],
+          }}
           exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.4, delay: 0.4, ease: 'easeOut' }}
+          transition={{
+            opacity: { duration: 0.4, delay: 0.4, ease: 'easeOut' },
+            scale: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+          }}
+          whileHover={{ scale: 1.08 }}
           style={{
             position: 'relative',
             maxWidth: '260px',
             width: '100%',
             aspectRatio: '1919 / 2560',
+            cursor: 'pointer',
           }}
         >
           {!isOpened && (
@@ -428,22 +436,24 @@ export default function Maudotrang() {
               </div>
             </>
           )}
-
-          {!isOpened && (
-            <motion.p
-              style={{
-                fontSize: '12px',
-                color: '#c41e3a',
-                fontWeight: '500',
-                marginTop: '15px',
-                textAlign: 'center',
-                letterSpacing: '2px'
-              }}
-            >
-              - NHẤP VÀO THIỆP ĐỂ MỞ -
-            </motion.p>
-          )}
         </motion.div>
+
+        {!isOpened && (
+          <p
+            onClick={handleOpen}
+            style={{
+              fontSize: '16px',
+              color: '#c41e3a',
+              fontWeight: '600',
+              marginTop: '15px',
+              textAlign: 'center',
+              letterSpacing: '2px',
+              cursor: 'pointer',
+            }}
+          >
+            - NHẤP VÀO THIỆP ĐỂ MỞ -
+          </p>
+        )}
       </section>
 
       {/* ==================== INNER CONTENT ==================== */}
@@ -483,8 +493,8 @@ export default function Maudotrang() {
                   minWidth: '140px'
                 }}>
                   <div style={{
-                    width: '80px',
-                    height: '120px',
+                    width: '100px',
+                    height: '150px',
                     marginRight: '20px',
                     overflow: 'hidden',
                     border: '3px solid #c9a84c',
@@ -508,11 +518,11 @@ export default function Maudotrang() {
                       color: '#c41e3a',
                       letterSpacing: '3px',
                       fontWeight: '700',
-                      marginBottom: '8px',
+                      marginBottom: '12px',
                     }}>Nhà Trai</p>
-                    <p style={{ fontSize: '14px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Tăng Văn Thăng</p>
-                    <p style={{ fontSize: '14px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Phạm Thị Nhiễm</p>
-                    <p style={{ fontSize: '12px', color: '#888', marginTop: '6px' }}>Bắc Thái Ninh, Hưng Yên</p>
+                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Tăng Văn Thăng</p>
+                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Phạm Thị Nhiễm</p>
+                    <p style={{ fontSize: '14px', color: '#888', marginTop: '6px' }}>Bắc Thái Ninh, Hưng Yên</p>
                   </div>
                 </div>
               </FadeIn>
@@ -536,15 +546,15 @@ export default function Maudotrang() {
                       color: '#c41e3a',
                       letterSpacing: '3px',
                       fontWeight: '700',
-                      marginBottom: '8px',
+                      marginBottom: '12px',
                     }}>Nhà Gái</p>
-                    <p style={{ fontSize: '14px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Trần Văn Cơ</p>
-                    <p style={{ fontSize: '14px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Trần Thị Tình</p>
-                    <p style={{ fontSize: '12px', color: '#888', marginTop: '6px' }}>Nam Lý, Ninh Bình</p>
+                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Trần Văn Cơ</p>
+                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Trần Thị Tình</p>
+                    <p style={{ fontSize: '14px', color: '#888', marginTop: '6px' }}>Nam Lý, Ninh Bình</p>
                   </div>
                   <div style={{
-                    width: '80px',
-                    height: '120px',
+                    width: '100px',
+                    height: '150px',
                     // borderRadius: '50%',
                     overflow: 'hidden',
                     marginLeft: '20px',
