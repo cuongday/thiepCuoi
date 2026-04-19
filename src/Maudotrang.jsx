@@ -29,6 +29,8 @@ const IMAGES = {
   gallery7: '/DSC00055.JPG',
   gallery8: '/DSC00119.JPG',
   thankyou: '/DSC09541.JPG',
+  disableMusic: 'https://content.pancake.vn/web-media/da/a7/3d/ef/b158e6a8dc14b3f4e6043961add4ee9c8db3f44ee4e8011cf9b2d7c7-w:200-h:200-l:5257-t:image/webp.png',
+  enableMusic: 'https://content.pancake.vn/1/s200x200/fwebp75/8b/6f/dd/fb/cf5ecf59198594e070980d032f42a099ebb38e3442cb170ccde55c52-w:200-h:200-l:190831-t:image/webp-ANIM.gif',
 }
 
 function FadeIn({ children, delay = 0 }) {
@@ -101,6 +103,8 @@ export default function Maudotrang() {
   const [isOpened, setIsOpened] = useState(false)
   const [showWeddingPhoto, setShowWeddingPhoto] = useState(false)
   const [showContent, setShowContent] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef(null)
   const [formData, setFormData] = useState({
     full_name: '',
     address: '',
@@ -113,7 +117,7 @@ export default function Maudotrang() {
   // Countdown to 03/05/2026 10:00
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   useEffect(() => {
-    const target = new Date('2026-05-03T10:00:00')
+    const target = new Date('2026-05-04T08:30:00')
     const tick = () => {
       const now = new Date()
       const diff = target - now
@@ -130,7 +134,24 @@ export default function Maudotrang() {
     return () => clearInterval(id)
   }, [])
 
-  const handleOpen = () => setIsOpened(true)
+  const handleOpen = () => {
+    setIsOpened(true)
+    enableMusic()
+  }
+
+  const enableMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => {})
+      setIsPlaying(true)
+    }
+  }
+
+  const disableMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
 
   useEffect(() => {
     if (isOpened) {
@@ -196,6 +217,95 @@ export default function Maudotrang() {
       overflowX: 'hidden',
     }}>
 
+      {/* ==================== FLOATING ICONS ==================== */}
+      {isOpened && (
+        <>
+          {/* Icon Music - bên trái */}
+          <motion.div
+            onClick={isPlaying ? disableMusic : enableMusic}
+            animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
+            transition={isPlaying ? { duration: 3, repeat: Infinity, ease: 'linear' } : { duration: 0.3 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              position: 'fixed',
+              bottom: '24px',
+              left: 'calc(50% - 210px + 20px)',
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 9999,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+              backgroundColor: '#fff',
+            }}
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#8B1E2D">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+          </motion.div>
+
+          {/* 2 icon bên phải - Comment & Gift */}
+          <div style={{
+            position: 'fixed',
+            bottom: '24px',
+            right: 'calc(50% - 210px + 20px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            zIndex: 9999,
+          }}>
+            {/* Icon Comment - scroll xuống form */}
+            <motion.div
+              onClick={() => document.getElementById('rsvp-form')?.scrollIntoView({ behavior: 'smooth' })}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                backgroundColor: '#fff',
+              }}
+            >
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#8B1E2D">
+                <path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>
+              </svg>
+            </motion.div>
+
+            {/* Icon Gift - scroll xuống QR code */}
+            <motion.div
+              onClick={() => document.getElementById('qr-code')?.scrollIntoView({ behavior: 'smooth' })}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                backgroundColor: '#fff',
+              }}
+            >
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#8B1E2D">
+                <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
+              </svg>
+            </motion.div>
+          </div>
+        </>
+      )}
+
       {/* ==================== SECTION 1: ENVELOPE COVER ==================== */}
       <section style={{
         position: 'relative',
@@ -242,7 +352,7 @@ export default function Maudotrang() {
 
           <motion.span style={{
             fontFamily: "'UTM-Sloop', sans-serif",
-            fontSize: '34px',
+            fontSize: '44px',
             color: '#8B1E2D',
             fontWeight: '400',
             whiteSpace: 'nowrap',
@@ -296,7 +406,7 @@ export default function Maudotrang() {
             style={
               {
                 position: 'absolute',
-                top: '20px',
+                top: '90px',
                 left: '20px',
                 right: '20px',
                 bottom: '20px',
@@ -321,6 +431,7 @@ export default function Maudotrang() {
                 textAlign: 'center',
                 margin: '10px 0',
                 padding: '8px 20px',
+                zIndex: 1000,
 
               }}>Trân Trọng Kính Mời</motion.h2>
             <motion.h4 
@@ -389,6 +500,7 @@ export default function Maudotrang() {
               pointerEvents: 'none',
               zIndex: 9,
               transform: 'rotate(-90deg)',
+              opacity: 0.8,
             }}
           />
         <motion.div
@@ -437,7 +549,10 @@ export default function Maudotrang() {
           )}
 
           {/* Hoa decoration - góc trái bên dưới */}
-          
+
+
+          {/* Audio nhạc nền */}
+          <audio ref={audioRef} src="/IDo.mp3" loop />
 
           {isOpened && (
             <>
@@ -550,8 +665,8 @@ export default function Maudotrang() {
                   minWidth: '140px'
                 }}>
                   <div style={{
-                    width: '100px',
-                    height: '150px',
+                    width: '150px',
+                    height: '225px',
                     marginRight: '20px',
                     overflow: 'hidden',
                     border: '3px solid #c9a84c',
@@ -571,15 +686,15 @@ export default function Maudotrang() {
                   </div>
                   <div>
                     <p style={{
-                      fontSize: '13px',
+                      fontSize: '18px',
                       color: '#c41e3a',
                       letterSpacing: '3px',
                       fontWeight: '700',
-                      marginBottom: '12px',
+                      marginBottom: '20px',
                     }}>Nhà Trai</p>
-                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Tăng Văn Thăng</p>
-                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Phạm Thị Nhiễm</p>
-                    <p style={{ fontSize: '14px', color: '#888', marginTop: '6px' }}>Bắc Thái Ninh, Hưng Yên</p>
+                    <p style={{ fontSize: '18px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Tăng Văn Thăng</p>
+                    <p style={{ fontSize: '18px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Phạm Thị Nhiễm</p>
+                    <p style={{ fontSize: '16px', color: '#888', marginTop: '6px' }}>Bắc Thái Ninh, Hưng Yên</p>
                   </div>
                 </div>
               </FadeIn>
@@ -599,19 +714,19 @@ export default function Maudotrang() {
                 }}>
                   <div>
                     <p style={{
-                      fontSize: '13px',
+                      fontSize: '18px',
                       color: '#c41e3a',
                       letterSpacing: '3px',
                       fontWeight: '700',
-                      marginBottom: '12px',
+                      marginBottom: '20px',
                     }}>Nhà Gái</p>
-                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Trần Văn Cơ</p>
-                    <p style={{ fontSize: '16px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Trần Thị Tình</p>
-                    <p style={{ fontSize: '14px', color: '#888', marginTop: '6px' }}>Nam Lý, Ninh Bình</p>
+                    <p style={{ fontSize: '18px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Ông: Trần Văn Cơ</p>
+                    <p style={{ fontSize: '18px', color: '#333', lineHeight: 1.6, fontWeight: '600' }}>Bà: Trần Thị Tình</p>
+                    <p style={{ fontSize: '16px', color: '#888', marginTop: '6px' }}>Nam Lý, Ninh Bình</p>
                   </div>
                   <div style={{
-                    width: '100px',
-                    height: '150px',
+                    width: '150px',
+                    height: '225px',
                     // borderRadius: '50%',
                     overflow: 'hidden',
                     marginLeft: '20px',
@@ -1027,7 +1142,7 @@ export default function Maudotrang() {
             </section>
 
             {/* ==================== SECTION 11: RSVP ==================== */}
-            <section style={{
+            <section id="rsvp-form" style={{
               width: '100%',
               background: '#fefcf8',
               display: 'flex',
@@ -1317,7 +1432,7 @@ export default function Maudotrang() {
               </div>
             </section>
             {/* ==================== SECTION 13: SHARE LOVE / QR ==================== */}
-            <section style={{
+            <section id="qr-code" style={{
               width: '100%',
               background: 'linear-gradient(180deg, #f9f6f1 0%, #fff 100%)',
               display: 'flex',
