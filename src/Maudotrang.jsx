@@ -816,7 +816,7 @@ export default function Maudotrang() {
                 transition={{ duration: 1.0, delay: 0.9, ease: 'easeOut' }}
                 style={{
                   fontSize: '39px',
-                  color: '#333',
+                  color: 'rgb(196, 30, 58)',
                   fontWeight: '700',
                   fontFamily: "'UTM-Sloop', sans-serif",
                   lineHeight: 1.2
