@@ -352,7 +352,7 @@ export default function Maudotrang() {
 
           <motion.span style={{
             fontFamily: "'UTM-Sloop', sans-serif",
-            fontSize: '44px',
+            fontSize: '42px',
             color: '#8B1E2D',
             fontWeight: '400',
             whiteSpace: 'nowrap',
@@ -375,7 +375,7 @@ export default function Maudotrang() {
 
           <motion.span style={{
             fontFamily: "'UTM-Sloop', sans-serif",
-            fontSize: '34px',
+            fontSize: '42px',
             color: '#8B1E2D',
             fontWeight: '400',
             whiteSpace: 'nowrap',
