@@ -1030,7 +1030,7 @@ export default function Maudotrang() {
                   marginBottom: '24px',
                 }}
               >
-                Vào Lúc 8 Giờ 30 Sáng | Thứ Hai
+                Vào Lúc 8 Giờ 30 Sáng | Chủ nhật
               </motion.p>
 
               {/* Container chính */}
