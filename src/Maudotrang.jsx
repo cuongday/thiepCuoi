@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { Analytics } from "@vercel/analytics/react"
 
 const IMAGES = {
   hero: 'https://statics.pancake.vn/web-media/47/01/d7/17/8804b2aaaf7d26c01c1815b62dfa230900cdf0cc0504bfabd6bbdbdb-w:313-h:313-l:12891-t:image/webp.webp',
@@ -205,6 +206,7 @@ export default function Maudotrang() {
   }
 
   return (
+    <>
     <div style={{
       maxWidth: '420px',
       margin: '0 auto',
@@ -1819,5 +1821,7 @@ export default function Maudotrang() {
         )}
       </AnimatePresence>
     </div>
+    <Analytics />
+    </>
   )
 }

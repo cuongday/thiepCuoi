@@ -81,3 +81,5 @@ out/
 # TypeScript
 
 *.tsbuildinfo
+.vercel
+.env*.local
