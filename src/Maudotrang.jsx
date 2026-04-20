@@ -117,7 +117,7 @@ export default function Maudotrang() {
   // Countdown to 03/05/2026 10:00
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   useEffect(() => {
-    const target = new Date('2026-05-04T08:30:00')
+    const target = new Date('2026-05-03T08:30:00')
     const tick = () => {
       const now = new Date()
       const diff = target - now
@@ -423,7 +423,7 @@ export default function Maudotrang() {
               fontWeight: '400',
               lineHeight: 1,
             }}>
-              <span>04</span>
+              <span>03</span>
               <span style={{ fontSize: '18px', margin: '0 2px' }}>.</span>
               <span>05</span>
             </div>
@@ -1093,7 +1093,7 @@ export default function Maudotrang() {
                         lineHeight: 1,
                       }}
                     >
-                      04
+                      03
                     </motion.span>
                   </motion.div>
 
@@ -1307,8 +1307,8 @@ export default function Maudotrang() {
                   {/* Heart overlay on day 04 — column T2 (col 4), row 1 of numbers */}
                   <div style={{
                     position: 'absolute',
-                    left: '20%',
-                    top: '38%',
+                    left: '80%',
+                    top: '28%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',
                   }}>
