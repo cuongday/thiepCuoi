@@ -1079,8 +1079,8 @@ export default function Maudotrang() {
                   {/* Heart overlay on day 04 — column T2 (col 4), row 1 of numbers */}
                   <div style={{
                     position: 'absolute',
-                    left: '46%',
-                    top: '22%',
+                    left: '20%',
+                    top: '38%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',
                   }}>
