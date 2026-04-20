@@ -988,6 +988,234 @@ export default function Maudotrang() {
             </section>
 
 
+            {/* ==================== SECTION INVITATION CARD ==================== */}
+            <section style={{
+              width: '100%',
+              background: '#fefcf8',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '30px 20px 40px',
+              textAlign: 'center',
+            }}>
+              {/* Tiêu đề chính */}
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                style={{
+                  fontFamily: 'Roboto, sans-serif',
+                  fontSize: '20px',
+                  fontWeight: '700',
+                  letterSpacing: '3px',
+                  color: '#8B1E2D',
+                  marginBottom: '4px',
+                }}
+              >
+                TIỆC MỪNG LỄ THÀNH HÔN
+              </motion.p>
+
+              {/* Thời gian */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                style={{
+                  fontFamily: 'Roboto, sans-serif',
+                  fontSize: '14px',
+                  color: '#666',
+                  letterSpacing: '1px',
+                  marginBottom: '24px',
+                }}
+              >
+                Vào Lúc 8 Giờ 30 Sáng | Thứ Hai
+              </motion.p>
+
+              {/* Container chính */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                style={{
+                  width: '100%',
+                  maxWidth: '380px',
+                  background: '#fff',
+                  borderRadius: '12px',
+                  border: '1.5px solid #8B1E2D',
+                  padding: '24px 16px',
+                  boxShadow: '0 8px 30px rgba(139, 30, 45, 0.12)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '12px',
+                }}
+              >
+                {/* 3 cột chính */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                  gap: '0',
+                }}>
+                  {/* Cột 1: Ngày */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    style={{
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      paddingRight: '16px',
+                      borderRight: '1px solid #ddd',
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: 'Roboto, sans-serif',
+                      fontSize: '11px',
+                      color: '#999',
+                      letterSpacing: '1px',
+                    }}>Ngày</span>
+                    <motion.span
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      style={{
+                        fontFamily: 'Roboto, sans-serif',
+                        fontSize: '42px',
+                        fontWeight: '700',
+                        color: '#8B1E2D',
+                        lineHeight: 1,
+                      }}
+                    >
+                      04
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Cột 2: Tháng */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    style={{
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      padding: '0 16px',
+                      borderRight: '1px solid #ddd',
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: 'Roboto, sans-serif',
+                      fontSize: '11px',
+                      color: '#999',
+                      letterSpacing: '1px',
+                    }}>Tháng</span>
+                    <motion.span
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+                      style={{
+                        fontFamily: 'Roboto, sans-serif',
+                        fontSize: '42px',
+                        fontWeight: '700',
+                        color: '#8B1E2D',
+                        lineHeight: 1,
+                      }}
+                    >
+                      05
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Cột 3: Năm */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    style={{
+                      flex: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      paddingLeft: '16px',
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: 'Roboto, sans-serif',
+                      fontSize: '11px',
+                      color: '#999',
+                      letterSpacing: '1px',
+                    }}>Năm</span>
+                    <motion.span
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+                      style={{
+                        fontFamily: 'Roboto, sans-serif',
+                        fontSize: '42px',
+                        fontWeight: '700',
+                        color: '#8B1E2D',
+                        lineHeight: 1,
+                      }}
+                    >
+                      2026
+                    </motion.span>
+                  </motion.div>
+                </div>
+
+                {/* Đường kẻ */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  style={{
+                    width: '100%',
+                    height: '1px',
+                    background: 'linear-gradient(90deg, transparent, #ddd, transparent)',
+                  }}
+                />
+
+                {/* Địa điểm */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.9 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}
+                >
+                  <motion.svg
+                    width="16" height="16" viewBox="0 0 24 24"
+                    fill="#8B1E2D"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </motion.svg>
+                  <span style={{
+                    fontFamily: 'Roboto, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#8B1E2D',
+                    letterSpacing: '1px',
+                  }}>
+                    Tại Nhà Trai và Nhà Gái
+                  </span>
+                </motion.div>
+              </motion.div>
+            </section>
+
+
             {/* ==================== SECTION 7: EVENT DETAILS - Tiệc Nhà Trai ==================== */}
             
 
@@ -1100,6 +1328,7 @@ export default function Maudotrang() {
                 </div>
               </FadeIn>
             </section>
+
 
             {/* ==================== SECTION 10: LOCATION ==================== */}
             <section style={{
