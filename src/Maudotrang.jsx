@@ -1018,33 +1018,26 @@ export default function Maudotrang() {
                 <p style={{ fontSize: '13px', fontWeight: '800', letterSpacing: '3px', color: '#333', marginBottom: '4px' }}>SAVE THE DATE</p>
                 <p style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '2px', color: '#333', marginBottom: '16px' }}>THÁNG 05 - 2026</p>
 
-                {/* Calendar grid header */}
+                {/* Calendar image with heart overlay on day 04 */}
                 <div style={{
                   width: '100%',
-                  maxWidth: '340px',
-                  background: '#8B1E2D',
-                  borderRadius: '6px 6px 0 0',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(7, 1fr)',
-                  padding: '6px 0',
+                  maxWidth: '380px',
+                  position: 'relative',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 8px 32px rgba(139, 30, 45, 0.15)',
+                  border: '2px solid #8B1E2D',
                 }}>
-                  {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map(d => (
-                    <span key={d} style={{ color: '#fff', fontSize: '11px', fontWeight: '600', textAlign: 'center' }}>{d}</span>
-                  ))}
-                </div>
-
-                {/* Calendar image with heart overlay on day 03 */}
-                <div style={{ width: '100%', maxWidth: '340px', position: 'relative' }}>
                   <img
                     src="/calender2.png"
                     alt="Lịch tháng 05 2026"
                     style={{ width: '100%', display: 'block' }}
                   />
-                  {/* Heart overlay on day 04 — column CN(col index 6), row 1 */}
+                  {/* Heart overlay on day 04 — column T2 (col 4), row 1 of numbers */}
                   <div style={{
                     position: 'absolute',
-                    left: '82%',
-                    top: '28%',
+                    left: '20%',
+                    top: '38%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',
                   }}>
