@@ -329,16 +329,24 @@ export default function Maudotrang() {
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
           style={{
           position: 'absolute',
-          bottom: '14%',
+          bottom: '10%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '14px',
           width: '100%',
           marginBottom: '20px',
           flexShrink: 0,
           zIndex: 1000,
         }}>
+          {/* Tên cô dâu chú rể */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '14px',
+            width: '100%',
+          }}>
           <motion.div style={{
             flex: 1,
             maxWidth: '60px',
@@ -395,6 +403,41 @@ export default function Maudotrang() {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 1.0, ease: 'easeOut' }}
           />
+          </div>
+
+          {/* Ngày 04.05 2026 - ngày/tháng trên, năm dưới */}
+          <motion.div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: '30px',
+          }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2, ease: 'easeOut' }}
+          >
+            <div style={{
+              fontFamily: "'Dancing Script', cursive",
+              fontSize: '34px',
+              color: '#8B1E2D',
+              fontWeight: '400',
+              lineHeight: 1,
+            }}>
+              <span>04</span>
+              <span style={{ fontSize: '18px', margin: '0 2px' }}>.</span>
+              <span>05</span>
+            </div>
+            <div style={{
+              fontFamily: "'Dancing Script', cursive",
+              fontSize: '34px',
+              color: '#8B1E2D',
+              fontWeight: '400',
+              lineHeight: 1.6,
+              letterSpacing: '2px',
+            }}>
+              2026
+            </div>
+          </motion.div>
         </motion.div>
         )}
 
@@ -1036,8 +1079,8 @@ export default function Maudotrang() {
                   {/* Heart overlay on day 04 — column T2 (col 4), row 1 of numbers */}
                   <div style={{
                     position: 'absolute',
-                    left: '20%',
-                    top: '38%',
+                    left: '46%',
+                    top: '22%',
                     transform: 'translate(-50%, -50%)',
                     pointerEvents: 'none',
                   }}>
