@@ -9,27 +9,27 @@ const IMAGES = {
   mapMarker: 'https://statics.pancake.vn/web-media/c9/7a/8a/e3/fb960ea4f4e39ac38adbbf4a43056dbd6a0aaf1e6cff9583e78c6d17-w:313-h:313-l:5539-t:image/webp.webp',
   qrCode: 'https://statics.pancake.vn/web-media/ef/a4/38/5e/15e40be995e3b9e588ae0a0ca1d7c3ff0465711cc07308837af54430-w:586-h:652-l:51250-t:image/jpeg.jpg',
   heartIcon: 'https://statics.pancake.vn/web-media/e1/9d/4c/50/671e154c9e28f0220e7fe187becbba9dcd39696ffc258b71f57b9dbe-w:100-h:100-l:3087-t:image/webp.webp',
-  bride1: '/DSC00013.JPG',
-  bride2: '/DSC00096.JPG',
-  bride3: '/DSC09311.JPG',
+  bride1: '/DSC00013.jpg',
+  bride2: '/DSC00096.jpg',
+  bride3: '/DSC09311.jpg',
   envelopeClosed: 'https://statics.pancake.vn/web-media/ce/0a/61/8b/bb03b54cdc80770d87986c12ef4d3aea6b8fb377ea55a84f33dec762-w:750-h:1050-l:9424-t:image/webp.webp',
   envelopeOpen: '/thiepmo.png',
   envelopeOpen2: 'https://content.pancake.vn/web-media/52/44/cd/4a/7ede4a56397999b667019a92043a9dcf7165e1b916ff1973db325148-w:750-h:1050-l:15848-t:image/webp.webp',
-  image1: '/DSC00007.JPG',
+  image1: '/DSC00007.jpg',
   bgr: '/bgr.png',
-  image2: '/DSC09311.JPG',
-  image3: '/DSC09654.JPG',
-  image4: '/DSC09273.JPG',
-  image5: '/DSC00048.JPG',
-  gallery1: '/DSC09612.JPG',
-  gallery2: '/DSC09789.JPG',
-  gallery3: '/DSC09997.JPG',
-  gallery4: '/DSC09979.JPG',
-  gallery5: '/DSC09864.JPG',
-  gallery6: '/DSC09438.JPG',
-  gallery7: '/DSC00055.JPG',
-  gallery8: '/DSC00119.JPG',
-  thankyou: '/DSC09541.JPG',
+  image2: '/DSC09311.jpg',
+  image3: '/DSC09654.jpg',
+  image4: '/DSC09273.jpg',
+  image5: '/DSC00048.jpg',
+  gallery1: '/DSC09612.jpg',
+  gallery2: '/DSC09789.jpg',
+  gallery3: '/DSC09997.jpg',
+  gallery4: '/DSC09979.jpg',
+  gallery5: '/DSC09864.jpg',
+  gallery6: '/DSC09438.jpg',
+  gallery7: '/DSC00055.jpg',
+  gallery8: '/DSC00119.jpg',
+  thankyou: '/DSC09541.jpg',
   disableMusic: 'https://content.pancake.vn/web-media/da/a7/3d/ef/b158e6a8dc14b3f4e6043961add4ee9c8db3f44ee4e8011cf9b2d7c7-w:200-h:200-l:5257-t:image/webp.png',
   enableMusic: 'https://content.pancake.vn/1/s200x200/fwebp75/8b/6f/dd/fb/cf5ecf59198594e070980d032f42a099ebb38e3442cb170ccde55c52-w:200-h:200-l:190831-t:image/webp-ANIM.gif',
 }
@@ -576,7 +576,7 @@ export default function Maudotrang() {
           }}
         >
           {!isOpened && (
-            <motion.img
+            <motion.img loading="lazy"
               src={IMAGES.envelopeClosed}
               alt="Envelope"
               style={{
@@ -642,7 +642,7 @@ export default function Maudotrang() {
                   width: '100%',
                 }}
               >
-                <img
+                <img loading="lazy"
                   src={IMAGES.envelopeOpen}
                   alt="Envelope"
                   style={{
@@ -719,7 +719,7 @@ export default function Maudotrang() {
                     marginBottom: '12px',
                     flexShrink: 0,
                   }}>
-                    <img
+                    <img loading="lazy"
                       src={IMAGES.bride1}
                       alt="Nhà trai"
                       style={{
@@ -780,7 +780,7 @@ export default function Maudotrang() {
                     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                     marginBottom: '12px'
                   }}>
-                    <img
+                    <img loading="lazy"
                       src={IMAGES.bride2}
                       alt="Nhà gái"
                       style={{
@@ -894,7 +894,7 @@ export default function Maudotrang() {
                   position: 'relative'
                 }}
               >
-                <img
+                <img loading="lazy"
                   src={IMAGES.image2}
                   alt="Wedding"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -947,7 +947,7 @@ export default function Maudotrang() {
                   flexShrink: 0,
                 }}
               >
-                <img src={IMAGES.image3} alt="Wedding 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img loading="lazy" src={IMAGES.image3} alt="Wedding 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
 
               {/* Ảnh giữa — cao hơn, bay từ dưới lên */}
@@ -967,7 +967,7 @@ export default function Maudotrang() {
                   marginBottom: '40px',
                 }}
               >
-                <img src={IMAGES.image4} alt="Wedding 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img loading="lazy" src={IMAGES.image4} alt="Wedding 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
 
               {/* Ảnh phải — bay từ dưới lên */}
@@ -985,7 +985,7 @@ export default function Maudotrang() {
                   flexShrink: 0,
                 }}
               >
-                <img src={IMAGES.image5} alt="Wedding 3" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img loading="lazy" src={IMAGES.image5} alt="Wedding 3" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </motion.div>
             </section>
 
@@ -1301,7 +1301,7 @@ export default function Maudotrang() {
                   boxShadow: '0 8px 32px rgba(139, 30, 45, 0.15)',
                   border: '2px solid #8B1E2D',
                 }}>
-                  <img
+                  <img loading="lazy"
                     src="/calender2.png"
                     alt="Lịch tháng 05 2026"
                     style={{ width: '100%', display: 'block' }}
@@ -1602,7 +1602,7 @@ export default function Maudotrang() {
                       transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
                       style={{ breakInside: 'avoid', marginBottom: '8px' }}
                     >
-                      <img src={img.src} alt="" style={{
+                      <img loading="lazy" src={img.src} alt="" style={{
                         width: '100%',
                         borderRadius: '8px',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -1665,7 +1665,7 @@ export default function Maudotrang() {
 
                 backgroundColor:"#00000080"
               }}>
-                <motion.img 
+                <motion.img loading="lazy" 
                   src="/thanks.webp" 
                   alt="" 
                   style={{ 
@@ -1752,7 +1752,7 @@ export default function Maudotrang() {
                     borderRadius: '12px',
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
-                    <img
+                    <img loading="lazy"
                       src="/tkChuRe.png"
                       alt="QR"
                       style={{
@@ -1785,7 +1785,7 @@ export default function Maudotrang() {
                     borderRadius: '12px',
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
-                    <img
+                    <img loading="lazy"
                       src="/tkCoDau.png"
                       alt="QR"
                       style={{
