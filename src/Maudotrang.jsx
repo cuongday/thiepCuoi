@@ -1302,7 +1302,7 @@ export default function Maudotrang() {
                   border: '2px solid #8B1E2D',
                 }}>
                   <img loading="lazy"
-                    src="/calender2.png"
+                    src="/calender.png"
                     alt="Lịch tháng 05 2026"
                     style={{ width: '100%', display: 'block' }}
                   />
