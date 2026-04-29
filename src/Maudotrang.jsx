@@ -13,7 +13,7 @@ const IMAGES = {
   bride2: 'https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/DSC00096.jpg',
   bride3: 'https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/DSC09311.jpg',
   envelopeClosed: 'https://statics.pancake.vn/web-media/ce/0a/61/8b/bb03b54cdc80770d87986c12ef4d3aea6b8fb377ea55a84f33dec762-w:750-h:1050-l:9424-t:image/webp.webp',
-  envelopeOpen: '/thiepmo.png',
+  envelopeOpen: 'https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/thiepmo.png',
   envelopeOpen2: 'https://content.pancake.vn/web-media/52/44/cd/4a/7ede4a56397999b667019a92043a9dcf7165e1b916ff1973db325148-w:750-h:1050-l:15848-t:image/webp.webp',
   image1: 'https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/DSC00007.jpg',
   bgr: '/bgr.png',
@@ -506,7 +506,7 @@ export default function Maudotrang() {
         <CornerDecoration position="bottomLeft" />
         <CornerDecoration position="bottomRight" />
         <img
-            src="/hoa2.png"
+            src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/hoa2.png"
             alt="Decoration"
             style={{
               position: 'absolute',
@@ -519,7 +519,7 @@ export default function Maudotrang() {
             }}
           />
         <img
-            src="/hoa2.png"
+            src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/hoa2.png"
             alt="Decoration"
             style={{
               position: 'absolute',
@@ -534,7 +534,7 @@ export default function Maudotrang() {
           />
 
 <img
-            src="/hoa2.png"
+            src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/hoa2.png"
             alt="Decoration"
             style={{
               position: 'absolute',
@@ -597,7 +597,7 @@ export default function Maudotrang() {
 
 
           {/* Audio nhạc nền */}
-          <audio ref={audioRef} src="/IDo.mp3" loop />
+          <audio ref={audioRef} src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/IDo.mp3" loop />
 
           {isOpened && (
             <>
@@ -1753,7 +1753,7 @@ export default function Maudotrang() {
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
                     <img loading="lazy"
-                      src="/tkChuRe.png"
+                      src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/tkChuRe.png"
                       alt="QR"
                       style={{
                         width: '100px',
@@ -1786,7 +1786,7 @@ export default function Maudotrang() {
                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
                   }}>
                     <img loading="lazy"
-                      src="/tkCoDau.png"
+                      src="https://tucwmpntpwloocqdinrw.supabase.co/storage/v1/object/public/image/tkCoDau.png"
                       alt="QR"
                       style={{
                         width: '100px',
